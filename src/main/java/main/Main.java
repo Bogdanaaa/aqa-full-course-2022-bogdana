@@ -1,14 +1,17 @@
 package main;
 
 import selenium.BaseWebTest;
+import selenium.WebEmailTest;
 
 import java.io.FileNotFoundException;
 
 public class Main {
 
     public static void main(String... args) {
-        BaseWebTest baseWebTest = new BaseWebTest();
-        baseWebTest.loadGooglePage();
+//        BaseWebTest baseWebTest = new BaseWebTest();
+//        baseWebTest.loadGooglePage();
+        WebEmailTest webEmailTest = new WebEmailTest();
+        webEmailTest.loadEmail();
     }
 
     public static void someMethod() throws FileNotFoundException {

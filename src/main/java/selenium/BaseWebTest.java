@@ -19,8 +19,8 @@ public class BaseWebTest {
             chromeDriver = new ChromeDriver();
             chromeDriver.get("https://google.com/");
 
-            List<WebElement> buttons = chromeDriver.findElements(By.tagName("button"));
-            buttons.get(3).click();
+//              List<WebElement> buttons = chromeDriver.findElements(By.tagName("button"));
+//            buttons.get(3).click();
 
             WebElement searchBar = chromeDriver.findElement(By.name("q"));
             searchBar.click();
