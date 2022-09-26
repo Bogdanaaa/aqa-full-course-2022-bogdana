@@ -19,6 +19,8 @@ public class BaseWebTest {
             chromeDriver = new ChromeDriver();
             chromeDriver.get("https://google.com/");
 
+
+
 //              List<WebElement> buttons = chromeDriver.findElements(By.tagName("button"));
 //            buttons.get(3).click();
 
@@ -27,6 +29,8 @@ public class BaseWebTest {
             searchBar.sendKeys("test parametrization");
             WebElement searchButton = chromeDriver.findElement(By.name("btnK"));
             searchButton.click();
+
+
         } finally {
             if (chromeDriver != null) {
                 chromeDriver.quit();

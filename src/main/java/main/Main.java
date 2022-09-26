@@ -1,53 +1,69 @@
 package main;
 
-import selenium.BaseWebTest;
-import selenium.WebEmailTest;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import selenium.*;
 
 import java.io.FileNotFoundException;
 
 public class Main {
 
     public static void main(String... args) {
-//        BaseWebTest baseWebTest = new BaseWebTest();
-//        baseWebTest.loadGooglePage();
-        WebEmailTest webEmailTest = new WebEmailTest();
-        webEmailTest.loadEmail();
-    }
 
-    public static void someMethod() throws FileNotFoundException {
-        someMethod("some_string");
-    }
+        //autotest for - BaseWebTest
+        /*BaseWebTest baseWebTest = new BaseWebTest();
+        baseWebTest.loadGooglePage();*/
 
-    public static void someMethod(String input) {
-        someMethod(input, 0);
-    }
+        //autotest for - WebEmailTest
+       /* WebEmailTest webEmailTest = new WebEmailTest();
+        webEmailTest.loadEmail();*/
 
-    public static void someMethod(String input, int amount) {
-        someMethod(input, amount, false);
-    }
-
-    public static void someMethod(String input, int amount, boolean isTrue) {
-
-    }
-
-    public static class A {
-        public void smth() {
-            System.out.println("this is A");
+        //autotest for GogglePage
+        WebDriverManager.chromedriver().setup();
+        ChromeDriver driver = new ChromeDriver();
+        try{
+            GooglePage googlePage = new GooglePage(driver);
+            //testGoogleOne(googlePage);
+            //testGoogleTwo(googlePage);
+            // cloudFlareCookiesTest(new CloudFlarePage(driver));
+            CloudFlareSignUpTest(new CloudFlareSignUpPage(driver));
         }
-    }
-
-    public static class B extends A {
-
-    }
-
-    public static class C extends B {
-        @Override
-        public void smth() {
-            System.out.println("this is C");
+        finally {
+            driver.quit();
         }
-    }
 
-    public static class D extends C {
 
     }
+
+    public static void cloudFlareCookiesTest(CloudFlarePage cloudFlarePage) {
+        cloudFlarePage.loadPage();
+        cloudFlarePage.waitForAcceptCookiesBtn().click();
+    }
+
+    public static void CloudFlareSignUpTest(CloudFlareSignUpPage cloudFlareSignUpPage){
+        cloudFlareSignUpPage.loadPage();
+        cloudFlareSignUpPage.waitForSignUpForm();
+        cloudFlareSignUpPage.EmailField("testmail@mail.com");
+        cloudFlareSignUpPage.PasswordField("password.green123");
+        cloudFlareSignUpPage.waitForPasswRule1();
+    }
+
+    public static void testGoogleOne(GooglePage googlePage) {
+        googlePage.loadPage();
+//        googlePage.acceptCookies(); //у мене немає кук
+        googlePage.setSearchValue("news Ukraine");
+        googlePage.pressSearchButton();
+    }
+
+    //1.43;
+
+
+    public static void testGoogleTwo(GooglePage googlePage) {
+        googlePage.loadPage();
+        googlePage.setSearchValue("news World");
+        googlePage.pressFeelingLucky();
+    }
+
+
 }
