@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WebDriverFactory {
+    //Factory патерн - це такий класс, який вміє створювати однотипні обʼєкти для Page object. Кожен елемент (пошук, котегоря, меню сбоку, блок реклами, херед, футер) це Page object
 
     private WebDriver driver;
 
@@ -18,11 +19,11 @@ public class WebDriverFactory {
         return instance;
     }
 
-    public WebDriver getActiveDriver() {
-        if (driver != null) {
-            return driver;
+    public WebDriver getActiveDriver() { //тут можемо передавати наприклад назву браузера в ()  . Наприклад (String browserName)
+        if (driver != null) { //драйвер якщо не порожній
+            return driver; //ми його вертаємо
         } else {
-            return getDriver();
+            return getDriver(); //якщо драйвера порожній повертаємо новий драйвер
         }
     }
 
