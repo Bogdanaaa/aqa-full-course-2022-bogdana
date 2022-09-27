@@ -23,6 +23,7 @@ public class CloudFlarePage {
 
     public WebElement waitForAcceptCookiesBtn() {
         return new WebDriverWait(driver, Duration.ofSeconds(10)) //ми будемо чекати 30 сек, доки..
+                //.until(ExpectedConditions.presenceOfElementLocated(By.id("onetrust-accept-btn-handler"))); //доки не зʼявится елемент з ід кнопки "onetrust-accept-btn-handler"
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("onetrust-accept-btn-handler"))); //доки не зʼявится елемент з ід кнопки "onetrust-accept-btn-handler"
     }
 
